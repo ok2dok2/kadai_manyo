@@ -10,7 +10,10 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
+      flash[:notice] = 'タスクを作成しました。'
       redirect_to tasks_path
+    else
+      flash[:alret] = 'タスクの作成に失敗しました。'
     end
   end
 
@@ -21,7 +24,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      redirect_to tasks_path
+      redirect_to tasks_path, notice:'タスクを更新しました。'
     else
       redirect_to edit_task_path
     end
