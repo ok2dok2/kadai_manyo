@@ -1,0 +1,10 @@
+<h3>タスク一覧</h3>
+
+<%= link_to "タスクを登録する", new_task_path %>
+
+<% @tasks.each do |task| %>
+  <p>タスク名：<%= task.name %>
+  <%= link_to '詳細',task_path(task.id) %>
+  <%= link_to '編集',edit_task_path(task.id) %>
+  <%= link_to '削除',task_path(task.id),method: :delete %></p>
+<% end %>
