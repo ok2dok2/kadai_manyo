@@ -1,6 +1,10 @@
 class TasksController < ApplicationController
   def index
+    if params[:sort]
+      @tasks = Task.all.order(id: "DESC")
+    else
     @tasks = Task.all
+    end
   end
 
   def new

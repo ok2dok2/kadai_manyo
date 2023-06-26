@@ -1,6 +1,8 @@
 <h3>タスク一覧</h3>
 
 <%= link_to "タスクを登録する", new_task_path %>
+<p><%= link_to "タスクを新しい順に並び替える", tasks_path(sort:"true") %></p>
+
 
 <% @tasks.each do |task| %>
   <p>タスク名：<%= task.name %>

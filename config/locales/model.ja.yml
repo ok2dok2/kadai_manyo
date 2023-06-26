@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      task:タスク
+    attributes:
+      task:
+        name: タスク
+        detail: タスク詳細
+  view:
+    
