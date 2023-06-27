@@ -1,7 +1,3 @@
-class Application < Rails::Application
-  config.time_zone = 'Tokyo'
-end
-
 require_relative "boot"
 
 require "rails/all"
@@ -23,6 +19,7 @@ module Manyo
                       controller_specs: false,
                       request_specs: false
     end
+    config.time_zone = 'Tokyo'
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

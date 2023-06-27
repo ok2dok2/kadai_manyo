@@ -3,10 +3,13 @@
 <%= link_to "タスクを登録する", new_task_path %>
 <p><%= link_to "タスクを新しい順に並び替える", tasks_path(sort:"true") %></p>
 
-
+<table>
 <% @tasks.each do |task| %>
-  <p>タスク名：<%= task.name %>
-  <%= link_to '詳細',task_path(task.id) %>
-  <%= link_to '編集',edit_task_path(task.id) %>
-  <%= link_to '削除',task_path(task.id),method: :delete %></p>
-<% end %>
+  <tr class="ichiran">
+    <td><%= task.name %></td>
+    <td><%= link_to '詳細',task_path(task.id) %></td>
+    <td><%= link_to '編集',edit_task_path(task.id) %></td>
+    <td><%= link_to '削除',task_path(task.id),method: :delete %></td>
+  </tr>
+  <% end %>
+</table>
