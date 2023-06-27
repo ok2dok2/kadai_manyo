@@ -1,11 +1,10 @@
 #テーブルスキーマ
 
-  create_table "tasks", force: :cascade do |t|
-    t.text "name", null: false
-    t.text "detail"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+  task table
+  ----------
+  | id  | name    | detail  | created_at | updated_at | 
+  | --- | ------- | ------- | ---------- | ---------- | 
+  | 1   | タスク1 | タスク1 |            |            | 
 
   #heroku　デプロイ手順
   ①heroku login
