@@ -1,6 +1,10 @@
 class TasksController < ApplicationController
   def index
+    if params[:sort]
+      @tasks = Task.all.order(id: "DESC")
+    else
     @tasks = Task.all
+    end
   end
 
   def new
@@ -13,7 +17,8 @@ class TasksController < ApplicationController
       flash[:notice] = 'タスクを作成しました。'
       redirect_to tasks_path
     else
-      flash[:alret] = 'タスクの作成に失敗しました。'
+      render "new"
+      # flash[:alret] = 'タスクの作成に失敗しました。'
     end
   end
 
