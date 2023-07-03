@@ -1,5 +1,15 @@
 ---
 ja:
+  enums:
+    task:
+      status:
+        done: 完了
+        now: 着手中
+        before: 未着手
+      priority:
+        high: 高
+        middle: 中
+        low: 低
   activerecord:
     errors:
       messages:

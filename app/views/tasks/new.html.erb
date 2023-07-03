@@ -18,5 +18,15 @@
   <p>詳細</p>
   <p><%= form.text_area :detail %></p>
 
+  <p>期限（※yyyy-mm-dd）</p>
+  <p><%= form.text_field :date %></p>
+
+  <p><%= form.label :状況 %>
+  <%= form.select :status, Task.statuses.keys.map {|k| [t("enums.task.status.#{k}"), k]} %></p>
+
+  <p><%= form.label :優先度 %>
+  <%= form.select :priority, Task.priorities.keys.map {|k| [t("enums.task.priority.#{k}"),k]} %></p>
+
+
   <%= form.submit "タスクを作成する" %>
   <% end %>
