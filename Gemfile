@@ -21,12 +21,14 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'spring'
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 4.0.1'
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'launchy'
   gem 'rexml'
+  gem 'kaminari'
 end
 
 group :development do

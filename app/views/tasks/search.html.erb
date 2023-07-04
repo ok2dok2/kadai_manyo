@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <td>タスク名</td>
+    <td>期限</td>
+    <td>優先度</td>
+  </tr>
+
+<% @tasks.each do |task| %>
+  <tr class="ichiran">
+    <td><%= task.name %></td>
+    <td><%= task.date %></td>
+    <td><%= t("enums.task.status.#{task.status}") %></td>
+    <td><%= link_to '詳細',task_path(task.id) %></td>
+    <td><%= link_to '編集',edit_task_path(task.id) %></td>
+    <td><%= link_to '削除',task_path(task.id),method: :delete %></td>
+  </tr>
+<% end %>
+</table>
