@@ -3,11 +3,15 @@ FactoryBot.define do
     name { 'テスト1' }
     detail { 'テスト1' }
     date { "2023-07-01" }
+    status { 0 }
+    priority { 2 }
   end
   
   factory :task2, class: Task do
     name { 'テスト2' }
-    content { 'テスト2' }
-    status {'未着手'}
+    detail { 'テスト2' }
+    date { "2023-07-04" }
+    status { 2 }
+    priority { 1 }
   end
 end

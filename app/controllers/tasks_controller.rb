@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
   def index
     if params[:sort_expired]
-      @tasks = Task.all.order(date: "ASC")
+      @tasks = Task.all.order(date: "ASC").page(params[:page])
     elsif params[:sort]
-      @tasks = Task.all.order(id: "DESC")
+      @tasks = Task.all.order(id: "DESC").page(params[:page])
     elsif params[:sort_priority]
-      @tasks = Task.all.order(id: "DESC")
+      @tasks = Task.all.order(id: "DESC").page(params[:page])
     else
-    @tasks = Task.all
+    @tasks = Task.all.page(params[:page])
     end
   end
 
