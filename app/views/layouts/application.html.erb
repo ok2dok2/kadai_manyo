@@ -11,9 +11,12 @@
   </head>
 
   <body>
-  <%= flash[:notice] %>
-  <%= flash[:alret] %>
-  
+    <%= flash[:notice] %>
+    <%= flash[:alret] %>
+    <%= flash[:danger] %>
+    <% if logged_in? %>
+      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

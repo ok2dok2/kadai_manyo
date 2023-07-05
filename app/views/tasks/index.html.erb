@@ -4,7 +4,7 @@
 
 <body>
 <h3>タスク一覧</h3>
-
+<%= link_to "マイページ", user_path(current_user) %> |
 <%= link_to "タスクを登録する", new_task_path %>
 <p><%= link_to "作成順でソートする", tasks_path(sort: "true") %>|<%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>|<%= link_to "優先順位でソートする", tasks_path(sort_priority: "true") %></p>
 
@@ -23,8 +23,9 @@
     <td>優先度</td>
   </tr>
 
-<% @tasks.each do |task| %>
-  <tr class="ichiran">
+  <% @tasks.each do |task| %>
+    <tr class="ichiran">
+    #<% if task.user_id = current_user.id %>
     <td><%= task.name %></td>
     <td><%= task.date %></td>
     <td><%= t("enums.task.status.#{task.status}") %></td>
@@ -34,7 +35,10 @@
     <td><button type="button" class="btn btn-outline-warning"><%= link_to '削除',task_path(task.id),method: :delete %></button></td>
   </tr>
   <% end %>
+<% end %>
 </table>
+
+<%= link_to '管理者ページ', admin_users_path %>
 
 <%= paginate @tasks %>
 
