@@ -5,14 +5,16 @@
 
 <h2>管理者ページ</h2>
 
+<%= link_to 'ユーザー登録', new_admin_user_path %>
 
-<table class="table table-success ">
-  <thead class="thead-dark">
+<table class="table table-dark">
+  <thead class="thead-light">
   <tr>
   <td>ユーザー名</td>
   <td>ユーザーアドレス</td>
+  <td>タスク数</td>
+  <td>編集</td>
   <td>削除</td>
-  <td>権限付与</td>
   </tr>
   </thead>
 
@@ -20,10 +22,14 @@
   <tr>
   <td><%= user.username %></td>
   <td><%= user.email %></td>
-  <td><%= link_to '■',admin_user_path(user.id), method: :delete %></td>
+  <td><%= user.tasks.count %></td>
+  <td><button type="button" class="btn btn-outline-success"><%= link_to '●',edit_admin_user_path(user.id) %></button></td>
+  <td><button type="button" class="btn btn-outline-warning"><%= link_to '●',admin_user_path(user.id), method: :delete %></button></td>
   </tr>
 <% end %>
 </table>
+
+<%= link_to '戻る', tasks_path %>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

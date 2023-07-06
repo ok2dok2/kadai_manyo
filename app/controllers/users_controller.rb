@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       redirect_to user_path(@user.id)
     else
       render :new, notice = "作成できませんでした"
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tasks = current_user.tasks.all
       unless current_user == @user #もし自分じゃない場合はマイページに飛べない
       redirect_to tasks_path, notice: '他ユーザーのマイページにはアクセスできません'
     end

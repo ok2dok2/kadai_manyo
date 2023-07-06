@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to tasks_path(user.id)
     else
-      flash.now[:danger] = 'ログインに失敗しました'
+      flash.now[:alert] = 'ログインに失敗しました'
       render :new
     end
   end

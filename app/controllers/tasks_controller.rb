@@ -8,7 +8,7 @@ class TasksController < ApplicationController
     elsif params[:sort_priority]
       @tasks = current_user.tasks.order(id: "DESC").page(params[:page])
     else
-    @tasks = current_user.tasks.all.page(params[:page])
+    @tasks = current_user.tasks.all.includes(:user).page(params[:page])
     end
   end
 
@@ -73,13 +73,13 @@ class TasksController < ApplicationController
     end
   end
 
-  #他の人のページにいけなくする
-  def show_log_in?
-    @task = Task.find(params[:id])
-    if current_user.id != @task.user_id
-      redirect_to tasks_path
-    end
-  end
+  # #他の人のページにいけなくする
+  # def show_log_in?
+  #   @task = Task.find(params[:id])
+  #   if current_user.id != @task.user_id
+  #     redirect_to tasks_path
+  #   end
+  # end
 end
 
 
