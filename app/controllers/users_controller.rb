@@ -21,8 +21,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @tasks = current_user.tasks.all
       unless current_user == @user #もし自分じゃない場合はマイページに飛べない
-      redirect_to tasks_path, notice: '他ユーザーのマイページにはアクセスできません'
-    end
+      redirect_to tasks_path,notice: '他ユーザーのマイページにはアクセスできません'
+      end
   end
   
   private

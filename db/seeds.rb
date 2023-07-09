@@ -1,4 +1,4 @@
-User.create!(username: 'test1', email: 'test1@gmail.com', password_digest: 'password')
+User.create!(username: 'admin1', email: 'admin1@gmail.com', password_digest: 'password', admin: 1)
 
 
 # This file should contain all the record creation needed to seed the database with its default values.

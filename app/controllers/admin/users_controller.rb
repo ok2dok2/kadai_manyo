@@ -21,14 +21,14 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admin_users_path
+      redirect_to admin_users_path, notice: 'ユーザー情報を更新しました'
     end
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-      redirect_to admin_users_path, notice: '削除しました'
+      redirect_to admin_users_path, notice: 'ユーザーを削除しました'
   end
   
 
