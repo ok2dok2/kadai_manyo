@@ -3,7 +3,7 @@ FactoryBot.define do
     name { 'テスト1' }
     detail { 'テスト1' }
     date { "2023-07-01" }
-    status { 0 }
+    status { 2 }
     priority { 2 }
   end
   

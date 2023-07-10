@@ -1,0 +1,44 @@
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+<h2>マイページ</h2>
+
+
+<p>ユーザー名:<%= @user.username %></p>
+<p>メールアドレス:<%= @user.email %></p>
+
+
+<h3>タスク一覧</h3>
+
+<table>
+  <tr>
+    <td>タスク名</td>
+    <td>期限</td>
+    <td>状況</td>
+    <td>優先度</td>
+    <td>ユーザー</td>
+  </tr>
+
+  <% @tasks.each do |task| %>
+    <tr class="ichiran">
+    <td><%= task.name %></td>
+    <td><%= task.date %></td>
+    <td><%= t("enums.task.status.#{task.status}") %></td>
+    <td><%= t("enums.task.priority.#{task.priority}") %></td>
+    <td><%= task.user.username %></td>
+    # <td><button type="button" class="btn btn-outline-primary"><%= link_to '詳細',task_path(task.id) %></button></td>
+    # <td><button type="button" class="btn btn-outline-success"><%= link_to '編集',edit_task_path(task.id) %></button></td>
+    # <td><button type="button" class="btn btn-outline-warning"><%= link_to '削除',task_path(task.id),method: :delete %></button></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to '戻る', tasks_path %>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+

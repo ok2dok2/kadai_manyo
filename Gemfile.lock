@@ -64,6 +64,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     autoprefixer-rails (10.4.13.0)
       execjs (~> 2)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -163,8 +164,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.7)
-    rack-mini-profiler (2.3.4)
-      rack (>= 1.2.0)
     rack-proxy (0.7.6)
       rack
     rack-test (2.1.0)
@@ -279,6 +278,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt
   bootsnap (>= 1.4.4)
   bootstrap (~> 4.4.1)
   byebug
@@ -296,7 +296,6 @@ DEPENDENCIES
   pg (~> 1.1)
   pry-rails
   puma (~> 5.0)
-  rack-mini-profiler (~> 2.0)
   rails (~> 6.1.6)
   rexml
   rspec-rails (~> 4.0.1)

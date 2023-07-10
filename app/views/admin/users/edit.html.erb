@@ -1,0 +1,22 @@
+<h2>ユーザー編集</h2>
+
+<%= form_with model: [:admin, @user], local: true do |f| %>
+
+  <%= f.label :ユーザー名 %>
+  <%= f.text_field :username %>
+
+  <%= f.label :メールアドレス %>
+  <%= f.text_field :email %>
+
+  <%= f.label :パスワード %>
+  <%= f.text_field :password %>
+  
+  <%= f.label :確認用パスワード %>
+  <%= f.text_field :password_confirmation %>
+
+  <%= f.label :管理者権限 %>
+  <%= f.check_box :admin, checked: true %>
+
+
+  <p><%= f.submit "アカウント編集" %></p>
+<% end %>

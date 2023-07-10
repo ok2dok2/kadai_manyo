@@ -1,13 +1,14 @@
 class TasksController < ApplicationController
+  before_action :log_in?
   def index
     if params[:sort_expired]
-      @tasks = Task.all.order(date: "ASC").page(params[:page])
+      @tasks = current_user.tasks.all.order(date: "ASC").page(params[:page])
     elsif params[:sort]
-      @tasks = Task.all.order(id: "DESC").page(params[:page])
+      @tasks = current_user.tasks.order(id: "DESC").page(params[:page])
     elsif params[:sort_priority]
-      @tasks = Task.all.order(id: "DESC").page(params[:page])
+      @tasks = current_user.tasks.order(id: "DESC").page(params[:page])
     else
-    @tasks = Task.all.page(params[:page])
+    @tasks = current_user.tasks.all.includes(:user).page(params[:page])
     end
   end
 
@@ -17,6 +18,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user_id = current_user.id
     if @task.save
       flash[:notice] = 'タスクを作成しました。'
       redirect_to tasks_path
@@ -64,4 +66,20 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:name, :detail, :date, :status, :priority)
   end
+
+  def log_in?
+    unless logged_in?
+    redirect_to new_session_path
+    end
+  end
+
+  # #他の人のページにいけなくする
+  # def show_log_in?
+  #   @task = Task.find(params[:id])
+  #   if current_user.id != @task.user_id
+  #     redirect_to tasks_path
+  #   end
+  # end
 end
+
+
