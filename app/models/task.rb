@@ -3,6 +3,8 @@ class Task < ApplicationRecord
   validates :detail, presence: true
   validates :date, presence: true
   belongs_to :user
+  has_many :tasklabels, dependent: :destroy
+  has_many :labels, through: :tasklabels
   enum status: [:before, :now, :done]
   enum priority: [:low, :middle, :high]
 
