@@ -1,8 +1,8 @@
 
 10.times do |n|
   User.create!(
-    username: 'admin#{n + 1}',
-    email: 'admin#{n + 1}@ggmail.com',
+    username: "admin#{n + 1}",
+    email: "admin#{n + 1}@ggmail.com",
     password: 'pass',
     password_confirmation: 'pass',
     admin: 1
