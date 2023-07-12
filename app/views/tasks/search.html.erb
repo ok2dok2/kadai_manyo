@@ -2,7 +2,13 @@
   <tr>
     <td>タスク名</td>
     <td>期限</td>
+    <td>状況</td>
     <td>優先度</td>
+    <td>ユーザー</td>
+    <td>タグ</td>
+    <td>詳細</td>
+    <td>編集</td>
+    <td>削除</td>
   </tr>
 
 <% @tasks.each do |task| %>
@@ -10,6 +16,13 @@
     <td><%= task.name %></td>
     <td><%= task.date %></td>
     <td><%= t("enums.task.status.#{task.status}") %></td>
+    <td><%= t("enums.task.priority.#{task.priority}") %></td>
+      <td><%= task.user.username %></td>
+      <td>
+        <% task.labels.each do |label| %>
+          <span class="badge badge-primary"><%= label.title %></span>
+      <% end %>
+      </td>
     <td><%= link_to '詳細',task_path(task.id) %></td>
     <td><%= link_to '編集',edit_task_path(task.id) %></td>
     <td><%= link_to '削除',task_path(task.id),method: :delete %></td>

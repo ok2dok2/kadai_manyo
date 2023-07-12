@@ -3,21 +3,31 @@
 </head>
 <body>
 <h1>タグ一覧</h1>
-
-<table class="table table-striped">
-  <tr><th style="width: 10%">タグid</th><th>タグ名</th></tr>
-  <% @labels.each do |label| %>
-    <tr><th><%= label.id %></th><th><%= label.title %></th></tr>
-    <% end %>
-</table>
-
 <%= form_with model: @label, url: labels_path,method: :post, local: true do |f| %>
 
-  <%= f.label :タグ名 %>
   <%= f.text_field :title %>
 
   <%= f.submit "タグ作成" %>
 <% end %>
+
+<table class="table table-striped">
+  <tr>
+    <th style="width: 10%">タグid</th>
+    <th>タグ名</th>
+    <th>削除</th>
+  </tr>
+
+
+  <% @labels.each do |label| %>
+    <tr>
+      <th><%= label.id %></th>
+      <th><%= label.title %></th>
+      <th><%= link_to '■', label_path(label.id), method: :delete %>
+      </tr>
+    <% end %>
+</table>
+
+<%= link_to '戻る', admin_users_path %>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

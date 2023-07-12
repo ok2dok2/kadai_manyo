@@ -1,4 +1,30 @@
-User.create!(username: 'admin1', email: 'admin1@gmail.com', password: 'pass', password_confirmation: 'pass', admin: 1)
+
+10.times do |n|
+  User.create!(
+    username: 'admin#{n + 1}',
+    email: 'admin#{n + 1}@ggmail.com',
+    password: 'pass',
+    password_confirmation: 'pass',
+    admin: 1
+  )
+end
+
+User.all.each do |user|
+  user.tasks.create(
+    name: 'テスト2',
+    detail: 'テスト2',
+    date: "2023-07-04",
+    status: 2,
+    priority: 1 
+  )
+end
+
+10.times do |n|
+  Label.create(
+    title: "label#{n + 1}"  
+  )
+end
+
 
 
 # This file should contain all the record creation needed to seed the database with its default values.

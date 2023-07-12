@@ -17,6 +17,7 @@ gem 'net-pop'
 gem 'kaminari'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -25,7 +26,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.1'
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'launchy'
   gem 'rexml'
   gem 'kaminari'
