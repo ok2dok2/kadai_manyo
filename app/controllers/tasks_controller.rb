@@ -59,12 +59,15 @@ class TasksController < ApplicationController
     if params[:search].present?
       @tasks = @tasks.select_search(params[:search])
     end
+    if params[:label_id].present?
+      @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id] })
+    end
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:name, :detail, :date, :status, :priority)
+    params.require(:task).permit(:name, :detail, :date, :status, :priority, label_ids: [])
   end
 
   def log_in?
